@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html" 
+     xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+
+        <title>Facelet Title</title>
+        <script src="https://kit.fontawesome.com/84913f23be.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'/>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <style>
+            body{
+                background-color: white;
+               
+            }
+
+            li{
+                margin:20px;
+                font-size:20px;
+                color:black;
+            }
+            ul{
+                list-style-type:none;
+            }
+            .nav{
+                position: absolute;
+                top:0px;
+                height:90px;
+                width:100%;
+                background-color:gray;
+            }
+            .veriler{
+                font-size: 20px;
+                position:relative;
+                left:150px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+
+
+        <h:form>
+            <div class="nav">
+                <div id="sol" style="margin-left:20px;">
+                    <h:commandButton style="margin-left:10px;margin-right:10px;margin-top: 25px;padding-left:20px;padding-right:20px;" value="Anasayfa" class="btn btn-danger btn-lg" action="admin" />
+                    <h:commandButton style="margin-left:10px;margin-right:10px;margin-top: 25px; padding-right:20px;padding-left:20px;" value="Profil" class="btn btn-danger btn-lg" action="profile" />
+                </div>
+
+                <div id="orta" style="margin:auto;">
+                    <h:inputText id="isim" style="font-size:20px; margin-top:35px;" value="#{mainpage.search}"/>
+                    <h:commandButton style="margin-left:10px;margin-right:10px;margin-bottom:  15px; padding-right:20px;padding-left:20px;" value="Ara" class="btn btn-danger btn-lg" action="search" />
+                </div>
+
+                <div id="sag" style="margin-right:20px;margin-top:25px;">
+                    <h:commandButton style="margin-left:10px;margin-right:10px;margin-bottom:  10px; padding-right:20px;padding-left:20px;" value="Çıkış Yap" class="btn btn-danger btn-lg" action="login" />
+
+                </div>
+            </div>
+        </h:form>
+
+
+
+
+
+
+
+
+
+        <div class="bg-secondary w-100 h-100">
+
+            <div style="background-color:gray;position:absolute;top:120px;right:250px;width: 1000px;height:500px;">
+                <h:form id="table">
+                    <ul>
+                        <li><span style="position:relative;top:30px;"><b>İSİM</b></span><div class="veriler">#{login.user1.name}</div><h:inputText id="isim" style="position:absolute; left:450px;top:55px;" value="#{login.user1.name}"/>
+                            <h:commandButton style="position:absolute; right:80px; top:55px;" value="Güncelle" class="btn btn-danger btn-lg" action="#{settingsController.isimguncelle()}" > <f:ajax execute="table" render="table"/>  </h:commandButton></li>
+
+                        <li><span style="position:relative;top:30px;">SOYİSİM</span><div class="veriler">#{login.user1.surname}</div><h:inputText id="soyisim" style="position:absolute; left:450px;top:130px;" value="#{login.user1.surname}"/>
+                            <h:commandButton style="position:absolute; right:80px; top:130px;" value="Güncelle" class="btn btn-danger btn-lg" action="#{settingsController.soyisimguncelle()}" > <f:ajax execute="table" render="table"/> </h:commandButton>  </li>
+
+                        <li><span style="position:relative;top:30px;">EMAIL</span><div class="veriler">#{login.user1.email}</div><h:inputText id="email" style="position:absolute;left:450px; top:205px;" value="#{login.user1.email}"/>
+                            <h:commandButton style="position:absolute;right:80px; top:205px;" value="Güncelle" class="btn btn-danger btn-lg" action="#{settingsController.emailguncelle()}" > <f:ajax execute="table" render="table"/> </h:commandButton></li>
+
+                        <li><span style="position:relative;top:30px;">ŞİFRE</span><div class="veriler">#{login.user1.password}</div><h:inputText id="sifre" style="position:absolute;left:450px; top:280px;" value="#{login.user1.password}"/>
+                            <h:commandButton style="position:absolute; right:80px; top:280px;" value="Güncelle" class="btn btn-danger btn-lg" action="#{settingsController.sifreguncelle()}" > <f:ajax execute="table" render="table"/> </h:commandButton></li>
+
+                        <li><span style="position:relative;top:30px;">HESABI SİL</span>
+                            <h:commandButton style="position:absolute; right:80px; top:350px;" value="SİL" class="btn btn-danger btn-lg"/></li>
+                    </ul>
+                </h:form>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+    </h:body>
+</html>
+

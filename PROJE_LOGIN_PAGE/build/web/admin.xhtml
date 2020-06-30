@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <script src="https://kit.fontawesome.com/84913f23be.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'/>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <style>
+
+            .nav{
+                position: absolute;
+                top:0px;
+                height:90px;
+                width:100%;
+                background-color:gray;
+            }
+            .dashboard{
+                top:300px;
+                width: 80%;
+                margin: 0 auto;
+                background: #c2c2d6;
+                position:relative;
+                margin-top:220px;
+                width:1000px;
+                left:0px;
+            }
+        </style>
+    </h:head>
+    <h:body> 
+        <h:form>
+            <div class="nav">
+                <div id="sol" style="margin-left:20px;">
+                    <h:commandButton style="margin-left:10px;margin-right:10px;margin-top: 25px;padding-left:20px;padding-right:20px;" value="Anasayfa" class="btn btn-danger btn-lg" action="admin" />
+                    <h:commandButton style="margin-left:10px;margin-right:10px;margin-top: 25px; padding-right:20px;padding-left:20px;" value="Profil" class="btn btn-danger btn-lg" action="profile" />
+                </div>
+
+                <div id="orta" style="margin:auto;">
+                    <h:inputText id="isim" style="font-size:20px; margin-top:35px;" value="#{mainpage.search}"/>
+                    <h:commandButton style="margin-left:10px;margin-right:10px;margin-bottom:  15px; padding-right:20px;padding-left:20px;" value="Ara" class="btn btn-danger btn-lg" action="search?faces-redirect=true" />
+                </div>
+
+                <div id="sag" style="margin-right:20px;margin-top:25px;">
+                    <h:commandButton style="margin-left:10px;margin-right:10px;margin-bottom:  10px; padding-right:20px;padding-left:20px;" value="Ayarlar" action="settings?faces-redirect=true" class="btn btn-danger btn-lg"/>
+                    <h:commandButton style="margin-left:10px;margin-right:10px;margin-bottom:  10px; padding-right:20px;padding-left:20px;" value="Çıkış Yap" class="btn btn-danger btn-lg" action="login" />
+
+                </div>
+            </div>
+        </h:form>
+
+        <h:form>
+            <div class="paylasim" style="position:absolute; top:200px; left:300px; width:900px; height:300px; background-color: #f2f2f2; ">
+                <div style="position:absolute; top:30px; left:100px;">
+                    <h:inputTextarea  rows="7" cols="70" value="#{mainpage.sharing}"/> 
+                </div>
+                <div style="position:absolute; top:30px; right: 70px; display:block; height:400px ">
+                    <ul style="list-style: none;">
+                        <li style="margin:10px;"><h:commandButton class="btn btn-light p-3 " value="Medya Yükle" action="admin"/></li>
+                        <li style="margin:10px;"><h:commandButton class="btn btn-light p-3 " value="Paylaş" action="#{mainpage.Share()}"/></li>
+                    </ul>
+
+                </div>
+            </div>
+        </h:form>
+
+        <h:form>
+
+            <div class="dashboard">
+                <h:dataTable class="table table-striped table-hover" value = "#{mainpage.paylasimlist}" var = "paylas">
+
+                    <h:column>    				
+                        <f:facet name = "header"></f:facet>    				
+                            #{paylas.name} #{paylas.surname}
+                    </h:column>
+                    <h:column>    				
+                        <f:facet name = "header"></f:facet>    				
+                            #{paylas.paylasim}
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name = "header"></f:facet>
+                            #{paylas.date}
+
+                    </h:column>
+                    <h:column>
+                        <f:facet name = "header"></f:facet>
+                        <h:form>
+                            #{paylas.paylasim_id}
+                            <hr />
+                        </h:form>
+                    </h:column>
+                    <!-- AŞAĞIYA YORUM BÖLÜMÜ EKLİYORUZ !-->
+                    <h:column>
+                        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Yorumlara Bak</button>
+                        <div id="demo" class="collapse">
+                            <h:dataTable class="table table-striped table-hover" value = "#{mainpage.yorumcek(paylas)}" var = "yorum">
+
+                                <h:column>    				
+                                    <f:facet name = "header"></f:facet>    				
+                                        #{yorum.name} #{yorum.surname}
+                                </h:column>
+                                <h:column>    				
+                                    <f:facet name = "header"></f:facet>    				
+                                        #{yorum.comment}
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name = "header"></f:facet>
+                                        #{yorum.date}
+
+                                </h:column>
+                            </h:dataTable>
+                        </div>
+                    </h:column>
+                    <h:column>
+                        <h:inputText id="yorum" style="font-size:20px;" value="#{mainpage.yorum}"/>
+                        <h:commandButton style="padding-right:20px;padding-left:20px;" value="Gönder" class="btn btn-danger btn-lg" action="#{mainpage.yorumat(paylas)}" />
+                    </h:column>
+                </h:dataTable>
+            </div>
+
+
+
+
+
+
+        </h:form>
+
+    </h:body>
+</html>
+

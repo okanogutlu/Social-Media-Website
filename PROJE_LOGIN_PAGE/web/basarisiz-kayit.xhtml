@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <script src="https://kit.fontawesome.com/84913f23be.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css"/>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'/>
+    <h:outputStylesheet library="css" name="bootstrap.css"/>
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+       <nav class="">
+            <div class="container clearfix">
+                <div id="logo-box">
+                    <a href="" >
+                        <i class=" twitter fab fa-twitter"></i>
+                    </a>
+                </div>
+            <div id="nav-links">
+                <ul>
+                    <li class="nav-item giris_yap">
+                        <h:form>
+                             <h:commandLink class="nav-link giris_yap_link a" value="Giris Yap" action="login"></h:commandLink>
+                        </h:form>
+                    </li>
+                    <li class="nav-item kayit_ol">
+                        <h:form>
+                            <h:commandLink  class="nav-link kayit_ol_link a" action="register" value="Kayıt Ol"></h:commandLink>
+                        </h:form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+        <header>
+            <div class="container kayit_xhtml">
+                <div id="form">
+                    <div class="form-group">
+                       <i class="triangle fas fa-exclamation-triangle"></i>
+                        <div class="kayit-icerik">
+                            <p>
+                                kayıt yapılırken sıkıntı çıkmıştır....
+                            </p>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </header>
+    </h:body>
+</html>
+

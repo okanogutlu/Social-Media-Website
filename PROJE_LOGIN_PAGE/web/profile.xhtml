@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="https://kit.fontawesome.com/84913f23be.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="style.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet'/>
+        <h:outputStylesheet library="css" name="bootstrap.css"/>
+        <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+
+            }
+
+            li.except {
+                float: left;
+
+            }
+            li{
+                font-size: large; margin:5px;
+            }
+            .dashboard {
+                position:absolute;
+                left:150px;
+                top:300px;
+                width: 80%;
+                margin: 0 auto;
+
+                background: #f0e68c;
+            }
+
+        </style>
+    </h:head>
+    <h:body>
+        <div style="position: relative;top:100px;" class="container">
+            <div class="row justify-content-center">
+                <div style="background-color: #fd7e14; padding:50px;" class="col-3 w-100">FOTO</div>
+                <div style="background-color: #fd7e14;padding:50px;" class="col w-100 "> 
+                    <h:form>
+                        <ul style="list-style-type:none;">
+                            <li class="except">#{profilecontroller.user1.name}</li>
+                            <li class="except">#{profilecontroller.user1.surname}</li>
+                        </ul> </h:form></div>
+                <div style="background-color: #fd7e14;height:75%;padding:50px;" class="col w-100"> 
+                    <h:form>
+                        <ul style="list-style-type:none;">
+                            <li>#{profilecontroller.user1.gender}</li>
+                            <li>#{profilecontroller.user1.email}</li>
+                        </ul></h:form></div>
+
+            </div>
+        </div>
+
+        <div class="dashboard">
+            <h:dataTable class="table table-striped table-hover" value = "#{profilecontroller.paylasimlist}" var = "paylas">
+
+                <h:column>    				
+                    <f:facet name = "header"></f:facet>    				
+                   #{paylas.paylasim}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header"></f:facet>
+                    #{paylas.date}
+
+                </h:column>
+                <h:column>
+                    <f:facet name = "header"></f:facet>
+                    <h:form>
+                       #{paylas.paylasim_id}
+                         <hr />
+                    </h:form>
+                </h:column>
+
+
+            </h:dataTable></div>
+
+    </h:body>
+</html>
